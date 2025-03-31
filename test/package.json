@@ -11,7 +11,7 @@
     "coverage-report": "c8 report"
   },
   "dependencies": {
-    "@bedrock/basic-authz-server": "^1.2.0",
+    "@bedrock/basic-authz-server": "^1.3.0",
     "@bedrock/basic-authz-server-storage": "file:..",
     "@bedrock/core": "^6.1.3",
     "@bedrock/mongodb": "^11.0.0",
