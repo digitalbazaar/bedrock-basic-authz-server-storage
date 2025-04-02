@@ -14,6 +14,7 @@ export const mockRecord1 = {
     id: 'c1d87160-f519-43cd-99b0-18a56370a3dd',
     sequence: 0,
     allowedScopes: ['read:/test-authorize-request'],
+    audience: 'https://localhost/namespace',
     secretHash: 'fepHTCljXBM3nb-tXlkkB_jD3KwdMwOqc_VmmBpuTfQ'
   }
 };
