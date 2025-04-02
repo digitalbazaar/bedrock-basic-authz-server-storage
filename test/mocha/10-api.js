@@ -372,4 +372,21 @@ describe('Client Record Index Tests', function() {
     executionStats.executionStages.inputStage.inputStage.inputStage
       .keyPattern.should.eql({'client.id': 1});
   });
+  it('is properly indexed for query of ' +
+    `'client.audience' in find()`, async function() {
+    const {executionStats} = await clients.find({
+      query: {'client.audience': mockRecord1.client.audience},
+      options: {
+        projection: {_id: 0, 'client.audience': 1}
+      },
+      explain: true
+    });
+    executionStats.nReturned.should.equal(1);
+    executionStats.totalKeysExamined.should.equal(1);
+    executionStats.totalDocsExamined.should.equal(0);
+    executionStats.executionStages.inputStage.stage
+      .should.equal('IXSCAN');
+    executionStats.executionStages.inputStage
+      .keyPattern.should.eql({'client.audience': 1});
+  });
 });
